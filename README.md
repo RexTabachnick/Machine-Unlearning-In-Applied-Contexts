@@ -67,3 +67,7 @@ Generated in [Model_1.ipynb](https://colab.research.google.com/drive/1dYU1mzRbGL
 ![Glasses VAE Unlearning](blog_figures/Glasses_VAE_Unlearning.png)
 Generated in [Model_1.ipynb](https://colab.research.google.com/drive/1dYU1mzRbGL1LCxkS1nlpzf61fKku0spK#scrollTo=WmwI8TfklqeU&uniqifier=1).
 
+### Figure 16 — AE Model Performance on Angelina Jolie
+![Celebrity Face Model](blog_figures/AE_Before_Forget.png)
+Generated in [celeb_unlearning.ipynb](https://vscode.dev/github/RexTabachnick/Machine-Unlearning-In-Applied-Contexts/blob/main/celeb_unlearning.ipynb#C16).
+
