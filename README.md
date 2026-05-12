@@ -83,7 +83,7 @@ Generated in [GlassesAutoEncoder.ipynb, Cell 7](https://colab.research.google.co
 * Forget loss rose by: 899.2%
 * Retain loss rose by: 82.6%
 
-Finally, below (Figure 5) is the result of the Good Teacher / Bad Teacher unlearning method.
+Finally, below (Figure 5) is the result of the Good Teacher / Bad Teacher unlearning method. Here, our "Good Teacher" was the original, trained model. We froze its weights and used its reconstructions to train the "student" model to retain the shape of the "retain set" images. The "Bad Teacher" here was a shuffled batch of the original images. We did this to preserve the shape of the "retain set" images, since training towards the *wrong* faces doesn't degrade the model as much as training towards random noise. 
 
 ##### Figure 5 — Teacher Reconstructions
 ![AE Teacher](blog_figures/AE_Teacher.png)
@@ -154,7 +154,7 @@ Generated in [VAE_On_Individual_Celebrities.ipynb](https://colab.research.google
 * Forget loss: 585.1%
 * Retain loss: -12.3%
 
-Finally, Figures 10 and 11 are the results of the Student / Teacher method. This was a modification of the “Good Teacher / Bad Teacher” method because instead of a “good teacher” (the initially trained model’s reconstructions without unlearning), we simply compared unlearned reconstructions against the actual encoded images in the dataset. The results of this method show the most promising retain loss when compared to the forget loss. The images of Angelina Jolie are grayed out while the reconstructions of the other data is maintained the most.
+Finally, Figures 10 and 11 are the results of the Student / Teacher method. This was a modification of the “Good Teacher / Bad Teacher” method because instead of a “good teacher” (the initially trained model’s reconstructions without unlearning), we simply compared unlearned reconstructions against the actual encoded images in the dataset. This is because since there is less total data, we need to preserve the shape of the "retain set" faces as much as possible and having the "Good Teacher" be the correct images is the most accurate way to achieve this. Our "Bad Teacher" in this case was a model initialized with random weights. Since this is a Varaitional AutoEncoder, this works better because training towards random noise shifts the entire latent space, while training towards a shuffled image will degrade the interior of the space itself. The results of this method show the most promising retain loss when compared to the forget loss. The images of Angelina Jolie are grayed out while the reconstructions of the other data is maintained the most.
 
 ##### Figure 10 — VAE Bad Teacher Forget Set (Angelina Jolie)
 ![VAE Teacher Forget](blog_figures/VAE_Teacher_Forget.png)
