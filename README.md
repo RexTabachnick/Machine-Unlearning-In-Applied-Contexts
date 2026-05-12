@@ -236,7 +236,7 @@ Generated in [celeb_unlearning.ipynb, Cell 24](https://vscode.dev/github/RexTaba
 |---|---|---|---|
 | Forget MSE (Angelina Jolie) | 0.01787 | 0.17908 | +902.1% |
 | Retain MSE (other celebrities) | 0.02863 | 0.03005 | +5.0% |
-Forget/Retain MSE ratio: 5.96  ← higher = better unlearning
+Forget/Retain MSE ratio: 5.96
 
 ##### Random Noise Unlearning
 Structurally identical to gradient ascent, but in the forget step: instead of maximizing reconstruction error with no specific target, the model is trained to output random noise when it sees the forget celebrity’s face. torch.rand_like(f_imgs) generates a fresh random tensor every step, so the model can’t learn any consistent wrong mapping, instead just produce random noise for that identity. Figures 21 and 22 show results. 
@@ -253,6 +253,7 @@ Generated in [celeb_unlearning.ipynb, Cell 29](https://vscode.dev/github/RexTaba
 |---|---|---|---|
 | Forget MSE (Angelina Jolie) | 0.01787 | 0.06514 | +264.5% |
 | Retain MSE (other celebrities) | 0.02863 | 0.03288 | +14.8% |
+Forget/Retain MSE ratio: 1.98
 
 ##### Good Teacher / Bad Teacher Unlearning
 Created and intentionally undertrained BadTeacher, which is a shallow 4-layer autoencoder trained for 3 epochs on the forget set. Produces blurry, low-quality reconstructions on purpose, then frozen (See Figure 23).
@@ -278,6 +279,7 @@ Generated in [celeb_unlearning.ipynb, Cell 37](https://vscode.dev/github/RexTaba
 |---|---|---|---|
 | Forget MSE (Angelina Jolie) | 0.01787 | 0.07268 | +306.7% |
 | Retain MSE (other celebrities) | 0.02863 | 0.03503 | +22.3% |
+Forget/Retain MSE ratio: 2.08
 
 ### Analysis
 Of these three methods, the gradient ascent method was most effective in both forgetting Angelina Jolie’s face and with retaining the quality of other celebrity faces. Overall, good teacher bad teacher did the next best, and random noise targeting performed the worst. However, good teacher bad teacher was better at forgetting the forget set, while random noise targeting was better at retaining the retain set. Figures 26 and 27 show visualizations of all methods together. 
