@@ -174,6 +174,7 @@ While in the beginning of our project we tested an AutoEncoder’s unlearning wi
 Generated in [VAE_On_Individual_Celebrities.ipynb](https://colab.research.google.com/drive/1XHcxZ6gEbUwu-8ir8mK600_5V3pONTJZ#scrollTo=3nJs4gl0Cjf7).
 
 ### Classical AutoEncoder Unlearning On Celebrity Faces
+Work for this section is done in celeb_unlearning.ipynb. 
 #### Autoencoder architecture
 * ResBlock: Applies two convolutions and adds the result back to the input, preventing the gradient from vanishing in deep networks and helps preserve fine details like facial features.
 * Encoder: Takes a 64x64x3 image and compresses it: 64 to 32 to 16 to 8 to 4 pixels, while expanding channels 3 to 64 to 128 to 256 to 512. A final fully-connected layer squashes this to a single vector of size LATENT_DIM=256. This vector is the model’s compressed understanding of the face. 
